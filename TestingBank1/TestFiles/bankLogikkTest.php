@@ -1,10 +1,9 @@
 <?php
 include_once '../Model/domeneModell.php';
-//include_once '../DAL/databaseStub.php';
+include_once '../DAL/bankDatabaseStub.php';
 include_once '../BLL/bankLogikk.php';
 
-class hentTransaksjonerTest extends PHPUnit\Framework\TestCase {
-
+class bankLogikkTest extends PHPUnit\Framework\TestCase {
     
     public function testDatoFeilTransaksjoner() 
     {
@@ -110,4 +109,60 @@ class hentTransaksjonerTest extends PHPUnit\Framework\TestCase {
         $this->assertEquals("114342344511",$konto->transaksjoner[2]->fraTilKontonummer);
         $this->assertEquals("Lekeland",$konto->transaksjoner[2]->melding);
     }
+    public function testSjekkLoggInn(){
+        //arrange
+        $personnummer ="01010122344";
+        $personnummerFeil ="0101012";
+        //$navn = "Per Olsen";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $passord="123456";
+        $passordFeil="123";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK",$bank->sjekkLoggInn($personnummer, $passord));
+        $this->assertEquals("Feil i personnummer",$bank->sjekkLoggInn($personnummerFeil, $passord));
+        $this->assertEquals("Feil i passord",$bank->sjekkLoggInn($personnummer, $passordFeil));
+    }
+    
+    public function testHentKonti(){
+        //arrange
+        $personnummer ="01010122344";
+        //$navn = "Per Olsen";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK", $bank->hentKonti($personnummer));
+    }
+    
+    public function testHentAlleKunder(){
+        //arrange
+        
+           $kunde1 = new kunde();
+           $kunde1->personnummer ="01010122344";
+           $kunde1->navn = "Per Olsen";
+           $kunde1->adresse = "Osloveien 82 0270 Oslo";
+           $kunde1->telefonnr="12345678";
+           $kunde1->passord="123456";
+           $kunde2 = new kunde();
+           $kunde2->personnummer ="01010122344";
+           $kunde2->navn = "Line Jensen";
+           $kunde2->adresse = "Askerveien 100, 1379 Asker";
+           $kunde2->telefonnr="92876789";
+           $kunde3 = new kunde();
+           $kunde3->personnummer ="02020233455";
+           $kunde3->navn = "Ole Olsen";
+           $kunde3->adresse = "Bærumsveien 23, 1234 Bærum";
+           $kunde3->telefonnr="99889988";
+        $bank=new BankDBStub();
+        
+        //act
+        //$alleKunderTest[] = [$bank->hentAlleKunder()];
+        //assert
+        $this->assertEquals($kunde1->personnummer, $bank->hentAlleKunder()[0]->personnummer);
+        
+        
+    }
 }
+

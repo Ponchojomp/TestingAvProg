@@ -14,6 +14,7 @@ class Bank
         {
             $this->db=$innDb;
         }
+        
     }
     
     function hentTransaksjoner($kontoNr, $fraDato, $tilDato)
@@ -33,11 +34,10 @@ class Bank
         {
             return "Feil i passord";
         }
-        
         $OK = $this->db->sjekkLoggInn($personnummer,$passord);
         return $OK;
     }
-    
+    //TODO: Test alt nedenfor
     function hentKonti($personnummer)
     {
         $konti = $this->db->hentKonti($personnummer);
@@ -78,5 +78,10 @@ class Bank
     {
         $kunde= $this->db->hentKundeInfo($personnummer);
         return $kunde;
+    }
+    
+    function hentAlleKunder(){
+        $alleKunder = $this->db->hentAlleKunder();
+        return $alleKunder;
     }
 }
