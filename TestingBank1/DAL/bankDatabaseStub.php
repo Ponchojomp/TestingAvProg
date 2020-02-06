@@ -1,4 +1,5 @@
 <?php
+//Arthur jobber her
     include_once '../Model/domeneModell.php';
     class BankDBStub
     {

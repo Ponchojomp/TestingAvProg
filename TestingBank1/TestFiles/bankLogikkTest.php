@@ -1,4 +1,5 @@
 <?php
+//Arthur jobber her
 include_once '../Model/domeneModell.php';
 include_once '../DAL/bankDatabaseStub.php';
 include_once '../BLL/bankLogikk.php';

@@ -1,8 +1,5 @@
 <?php
 include_once 'View/minNavigasjon.php';
-include_once 'DAL/bankDatabaseStub.php';
-$bank = new BankDBStub();
-echo "";
 ?>
 <br/><br/>
 <div class="container">
@@ -13,6 +10,6 @@ echo "";
     <a href="View/loggInn.php" class="btn btn-success">Logg inn</a>
     <br/> <br/>
     <div id="feilMeldinger"></div>
-    <script>console.log( . $bank->hentAlleKunder()[0]->personnummer . )</script>
+    
 </div>
 
