@@ -1,7 +1,7 @@
 <?php
 //Arthur jobber her
 include_once '../Model/domeneModell.php';
-include_once '../DAL/bankDatabaseStub.php';
+//include_once '../DAL/bankDatabaseStub.php';
 include_once '../BLL/bankLogikk.php';
 
 class bankLogikkTest extends PHPUnit\Framework\TestCase {
@@ -139,31 +139,44 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
     
     public function testHentAlleKunder(){
         //arrange
-        
-           $kunde1 = new kunde();
-           $kunde1->personnummer ="01010122344";
-           $kunde1->navn = "Per Olsen";
-           $kunde1->adresse = "Osloveien 82 0270 Oslo";
-           $kunde1->telefonnr="12345678";
-           $kunde1->passord="123456";
-           $kunde2 = new kunde();
-           $kunde2->personnummer ="01010122344";
-           $kunde2->navn = "Line Jensen";
-           $kunde2->adresse = "Askerveien 100, 1379 Asker";
-           $kunde2->telefonnr="92876789";
-           $kunde3 = new kunde();
-           $kunde3->personnummer ="02020233455";
-           $kunde3->navn = "Ole Olsen";
-           $kunde3->adresse = "Bærumsveien 23, 1234 Bærum";
-           $kunde3->telefonnr="99889988";
-        $bank=new BankDBStub();
+        $bank=new Bank(new BankDBStub());
+        $kunde1personnummer ="01010122344";
+           $kunde1fornavn = "Per";
+           $kunde1etternavn = "Olsen";
+           $kunde1adresse = "Osloveien 82 0270 Oslo";
+           $kunde1telefonnr="12345678";
+           $kunde2personnummer ="01010122344";
+           $kunde2fornavn = "Line";
+           $kunde2etternavn = "Jensen";
+           $kunde2adresse = "Askerveien 100, 1379 Asker";
+           $kunde2telefonnr="92876789";
+           $kunde3personnummer ="02020233455";
+           $kunde3fornavn = "Ole";
+           $kunde3etternavn = "Olsen";
+           $kunde3adresse = "Bærumsveien 23, 1234 Bærum";
+           $kunde3telefonnr="99889988";
         
         //act
-        //$alleKunderTest[] = [$bank->hentAlleKunder()];
+        //$alleKunderTest[] = $bank->hentAlleKunder();
         //assert
-        $this->assertEquals($kunde1->personnummer, $bank->hentAlleKunder()[0]->personnummer);
         
-        
+            $this->assertEquals($kunde1personnummer, $bank->hentAlleKunder()[0]->personnummer);
+            $this->assertEquals($kunde1fornavn, $bank->hentAlleKunder()[0]->fornavn);
+            $this->assertEquals($kunde1etternavn, $bank->hentAlleKunder()[0]->etternavn);
+            $this->assertEquals($kunde1adresse, $bank->hentAlleKunder()[0]->adresse);
+            $this->assertEquals($kunde1telefonnr, $bank->hentAlleKunder()[0]->telefonnr);
+            
+            $this->assertEquals($kunde2personnummer, $bank->hentAlleKunder()[1]->personnummer);
+            $this->assertEquals($kunde2fornavn, $bank->hentAlleKunder()[1]->fornavn);
+            $this->assertEquals($kunde2etternavn, $bank->hentAlleKunder()[1]->etternavn);
+            $this->assertEquals($kunde2adresse, $bank->hentAlleKunder()[1]->adresse);
+            $this->assertEquals($kunde2telefonnr, $bank->hentAlleKunder()[1]->telefonnr);
+            
+            $this->assertEquals($kunde3personnummer, $bank->hentAlleKunder()[2]->personnummer);
+            $this->assertEquals($kunde3fornavn, $bank->hentAlleKunder()[2]->fornavn);
+            $this->assertEquals($kunde3etternavn, $bank->hentAlleKunder()[2]->etternavn);
+            $this->assertEquals($kunde3adresse, $bank->hentAlleKunder()[2]->adresse);
+            $this->assertEquals($kunde3telefonnr, $bank->hentAlleKunder()[2]->telefonnr);
     }
 }
 
