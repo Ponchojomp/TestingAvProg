@@ -129,35 +129,35 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
     public function testHentKonti(){
         //arrange
         $personnummer ="01010122344";
+        $personnummerFeil ="0101012";
         //$navn = "Per Olsen";
         //$adresse = "Osloveien 82 0270 Oslo";
         //$telefonnr="12345678";
         $bank=new Bank(new BankDBStub());
         //assert
         $this->assertEquals("OK", $bank->hentKonti($personnummer));
+        $this->assertEquals("Feil i personnummer", $bank->hentKonti($personnummerFeil));
     }
     
     public function testHentAlleKunder(){
         //arrange
         $bank=new Bank(new BankDBStub());
         $kunde1personnummer ="01010122344";
-           $kunde1fornavn = "Per";
-           $kunde1etternavn = "Olsen";
-           $kunde1adresse = "Osloveien 82 0270 Oslo";
-           $kunde1telefonnr="12345678";
-           $kunde2personnummer ="01010122344";
-           $kunde2fornavn = "Line";
-           $kunde2etternavn = "Jensen";
-           $kunde2adresse = "Askerveien 100, 1379 Asker";
-           $kunde2telefonnr="92876789";
-           $kunde3personnummer ="02020233455";
-           $kunde3fornavn = "Ole";
-           $kunde3etternavn = "Olsen";
-           $kunde3adresse = "Bærumsveien 23, 1234 Bærum";
-           $kunde3telefonnr="99889988";
+        $kunde1fornavn = "Per";
+        $kunde1etternavn = "Olsen";
+        $kunde1adresse = "Osloveien 82 0270 Oslo";
+        $kunde1telefonnr="12345678";
+        $kunde2personnummer ="01010122344";
+        $kunde2fornavn = "Line";
+        $kunde2etternavn = "Jensen";
+        $kunde2adresse = "Askerveien 100, 1379 Asker";
+        $kunde2telefonnr="92876789";
+        $kunde3personnummer ="02020233455";
+        $kunde3fornavn = "Ole";
+        $kunde3etternavn = "Olsen";
+        $kunde3adresse = "Bærumsveien 23, 1234 Bærum";
+        $kunde3telefonnr="99889988";
         
-        //act
-        //$alleKunderTest[] = $bank->hentAlleKunder();
         //assert
         
             $this->assertEquals($kunde1personnummer, $bank->hentAlleKunder()[0]->personnummer);
@@ -177,6 +177,23 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
             $this->assertEquals($kunde3etternavn, $bank->hentAlleKunder()[2]->etternavn);
             $this->assertEquals($kunde3adresse, $bank->hentAlleKunder()[2]->adresse);
             $this->assertEquals($kunde3telefonnr, $bank->hentAlleKunder()[2]->telefonnr);
+    }
+    
+    public function testHentSaldi(){
+        //arrange
+        $personnummer ="01010122344";
+        $personnummerFeil ="0101012";
+        //$navn = "Per Olsen";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK", $bank->hentSaldi($personnummer));
+        $this->assertEquals("Feil i personnummer", $bank->hentSaldi($personnummerFeil));
+    }
+    
+    public function testregistrerBetaling(){
+        
     }
 }
 

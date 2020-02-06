@@ -105,4 +105,10 @@
             return "OK";
         }
         
+        public function hentSaldi($personnummer){
+            $kunde = new konto($personnummer);
+            $saldi = $kunde->saldo;
+            return "OK";
+        }
+        
     }

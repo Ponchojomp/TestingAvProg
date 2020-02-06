@@ -41,12 +41,20 @@ class Bank
     //TODO: Test alt nedenfor
     function hentKonti($personnummer)
     {
+        if(!preg_match("/[0-9]{11}/", $personnummer))
+        {
+            return "Feil i personnummer";
+        }
         $konti = $this->db->hentKonti($personnummer);
         return $konti;
     }
     
     function hentSaldi($personnummer)
     {
+        if(!preg_match("/[0-9]{11}/", $personnummer))
+        {
+            return "Feil i personnummer";
+        }
         $saldi = $this->db->hentSaldi($personnummer);
         return $saldi;
     }
