@@ -193,6 +193,13 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
     }
     
     public function testregistrerBetaling(){
+        //arrange
+        $kontonummer;
+        //$navn = "Per Olsen";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
         
     }
 }

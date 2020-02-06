@@ -111,4 +111,7 @@
             return "OK";
         }
         
+        public function registrerBetaling($kontoNr, $transaksjon){
+            
+        }
     }
