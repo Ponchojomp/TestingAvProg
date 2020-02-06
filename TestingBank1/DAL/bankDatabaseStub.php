@@ -9,9 +9,10 @@
            $enKunde->navn = "Per Olsen";
            $enKunde->adresse = "Osloveien 82, 0270 Oslo";
            $enKunde->telefonnr="12345678";
+           $enKunde->passord="123456";
            return $enKunde;
         }
-        function hentAlleKunder()
+        public function hentAlleKunder()
         {
            $alleKunder = array();
            $kunde1 = new kunde();
@@ -19,6 +20,7 @@
            $kunde1->navn = "Per Olsen";
            $kunde1->adresse = "Osloveien 82 0270 Oslo";
            $kunde1->telefonnr="12345678";
+           $kunde1->passord="123456";
            $alleKunder[]=$kunde1;
            $kunde2 = new kunde();
            $kunde2->personnummer ="01010122344";
@@ -87,4 +89,16 @@
             }
             return $konto;
         }
+        public function sjekkLoggInn($personnummer,$passord){
+            $kunde = $this->hentEnKunde($personnummer);
+            if($passord == $kunde->passord){
+                return "OK";
+            }
+        }
+        public function hentKonti($personnummer){
+            $kunde = new konto($personnummer);
+            $konto[] = [$kunde->kontonummer,$kunde->personnummer,$kunde->saldo, $kunde->transaksjoner, $kunde->type, $kunde->valuta];
+            return "OK";
+        }
+        
     }
