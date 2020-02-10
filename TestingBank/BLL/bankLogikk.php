@@ -61,6 +61,10 @@ class Bank
     
     function registrerBetaling($kontoNr, $transaksjon)
     {
+        if(!preg_match("/[0-9]{11}/", $kontoNr))
+        {
+            return "Feil i kontonummer";
+        }
         $ok = $this->db->registrerBetaling($kontoNr, $transaksjon);
         return $ok;
     }

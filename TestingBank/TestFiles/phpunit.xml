@@ -9,7 +9,12 @@ and open the template in the editor.
 <phpunit>
      <filter>
         <whitelist>
-            <directory suffix=".php">../</directory>
+            <directory suffix=".php">../BLL/</directory>
+            <directory suffix=".php">../DAL/</directory>
+            <exclude>
+                <file>../DAL/adminDatabase.php</file>
+                <file>../DAL/bankDatabase.php</file>
+            </exclude>
          </whitelist>
     </filter>
 </phpunit>

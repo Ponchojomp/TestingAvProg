@@ -194,13 +194,22 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
     
     public function testregistrerBetaling(){
         //arrange
-        $kontonummer;
+        $kontoNr = "10502023523";
+        $fraDato = '2015-03-26';
+        $tilDato = '2015-03-30';
         //$navn = "Per Olsen";
         //$adresse = "Osloveien 82 0270 Oslo";
         //$telefonnr="12345678";
         $bank=new Bank(new BankDBStub());
+        //act
+        $transaksjon = new transaksjon();
+        $transaksjon->dato='2015-03-26';
+        $transaksjon->transaksjonBelop=134.4;
+        $transaksjon->fraTilKontonummer="22342344556";
+        $transaksjon->melding="Meny Holtet";
         //assert
-        
+        $this->assertEquals("OK", $bank->registrerBetaling($kontoNr, $transaksjon));
+        $this->assertEquals("Feil i kontonummer", $bank->registrerBetaling("234654", $transaksjon));
     }
 }
 
