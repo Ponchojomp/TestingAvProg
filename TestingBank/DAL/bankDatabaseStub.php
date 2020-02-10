@@ -114,4 +114,16 @@
         public function registrerBetaling($kontoNr, $transaksjon){
             return "OK";
         }
+        
+        public function hentBetalinger($personnummer){
+            return "OK";
+        }
+        
+        public function utforBetaling($TxId){
+            return "OK";
+        }
+        
+        public function endreKundeInfo($kunde){
+            return "OK";
+        }
     }

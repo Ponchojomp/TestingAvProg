@@ -194,10 +194,8 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
     
     public function testregistrerBetaling(){
         //arrange
-        $kontoNr = "10502023523";
-        $fraDato = '2015-03-26';
-        $tilDato = '2015-03-30';
         //$navn = "Per Olsen";
+        $kontoNr = "22342344556";
         //$adresse = "Osloveien 82 0270 Oslo";
         //$telefonnr="12345678";
         $bank=new Bank(new BankDBStub());
@@ -211,5 +209,47 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
         $this->assertEquals("OK", $bank->registrerBetaling($kontoNr, $transaksjon));
         $this->assertEquals("Feil i kontonummer", $bank->registrerBetaling("234654", $transaksjon));
     }
+    
+    public function testHentBetalinger(){
+        //arrange
+        $personnummer ="01010122344";
+        $personnummerFeil ="0101012";
+        //$navn = "Per Olsen";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK", $bank->hentBetalinger($personnummer));
+        $this->assertEquals("Feil i personnummer", $bank->hentBetalinger($personnummerFeil));
+    }
+    
+    public function testUtforBetaling(){
+        //arrange
+        $personnummer ="01010122344";
+        //$navn = "Per Olsen";
+        $TxId = "1";
+        $TxIdFeil = "-1";
+        //$adresse = "Osloveien 82 0270 Oslo";
+        //$telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK", $bank->utforBetaling($TxId));
+        $this->assertEquals("Feil TxId", $bank->utforBetaling($TxIdFeil));
+    }
+    
+    public function testEndreKunde(){
+        //arrange
+        $kunde = new kunde();
+           $kunde->personnummer ="01010122344";
+           $kunde->fornavn = "Per";
+           $kunde->etternavn = "Olsen";
+           $kunde->adresse = "Osloveien 82 0270 Oslo";
+           $kunde->telefonnr="12345678";
+        $bank=new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals("OK", $bank->endreKundeInfo($kunde));
+    }
+    
+    
 }
 

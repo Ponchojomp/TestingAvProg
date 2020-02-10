@@ -4,18 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/API/hentTransaksjoner.php</file>
             <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/DAL/bankDatabaseStub.php</file>
             <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/BLL/bankLogikk.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/API/hentKonti.php</file>
             <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/TestFiles/bankLogikkTest.php</file>
             <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/Model/domeneModell.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/View/loggInn.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/View/loggInnAdmin.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/API/registrerBetaling.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/API/apiAdminHeader.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/API/loggInn.php</file>
-            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/DAL/bankDatabase.php</file>
+            <file>file:/C:/Users/S1rShadez/Documents/GitHub/TestingAvProg/TestingBank/TestFiles/phpunit.xml</file>
         </group>
     </open-files>
 </project-private>

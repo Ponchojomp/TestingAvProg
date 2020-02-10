@@ -71,12 +71,19 @@ class Bank
     
     function hentBetalinger($personnummer)
     {
+        if(!preg_match("/[0-9]{11}/", $personnummer))
+        {
+            return "Feil i personnummer";
+        }
         $betalinger = $this->db->hentBetalinger($personnummer);
         return $betalinger;
     }
     
     function utforBetaling($TxID)
     {
+        if($TxID == "-1"){
+            return "Feil TxId";
+        }
         $ok = $this->db->utforBetaling($TxID);
         return $ok;
     }
