@@ -9,7 +9,8 @@ class Admin
     {
         if($innDb==null)
         {
-            $this->db=new AdminDB(); 
+            //$this->db=new AdminDB();
+            $this->db=new AdminDBStub(); 
         }
         else
         {
@@ -21,6 +22,12 @@ class Admin
     {
         $kunder= $this->db->hentAlleKunder();
         return $kunder;
+    }
+    
+    function hentTransaksjoner($kontoNr, $fraDato, $tilDato)
+    {
+        $konto= $this->db->hentTransaksjoner($kontoNr, $fraDato, $tilDato);
+        return $konto;
     }
     
     function endreKundeInfo($kunde)
