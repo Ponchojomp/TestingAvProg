@@ -1,5 +1,6 @@
 <?php
 // Jeg jobber med denne nå - Mathias
+// Jeg også - Leo
 include_once '../Model/domeneModell.php';
     class AdminDBStub
     {
@@ -81,5 +82,45 @@ include_once '../Model/domeneModell.php';
             }
             return $konto;
         }
-
+        
+        function endreKundeInfo($kunde){
+            If($kunde->P==-1){
+                return "Feil";
+            }
+            return "OK";
+        }
+        
+        function registrerKunde($konto){
+            If($konto->ID ==-1){
+                return "Feil";
+            }
+            return "OK";
+        }
+        
+        
+        function slettKunde($personnummer){
+            If($kunde->ID ==-1){
+                return "Feil";
+            }
+            return "OK";
+        }
+        
+        function registrerKonto($konto){
+            If($kunde->ID ==-1){
+                return "Feil";
+            }
+            return "OK";
+        }
+        function endreKonto($konto){
+            
+        }
+        
+        function hentAlleKonti(){
+            
+        }
+       
+        function slettKonto($kontonummer){
+            
+        }
     }
+    
