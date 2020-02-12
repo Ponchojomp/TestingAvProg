@@ -3,7 +3,7 @@
     include_once '../Model/domeneModell.php';
     class BankDBStub
     {
-        function hentEnKunde($personnummer)
+        public function hentEnKunde($personnummer)
         {
            $enKunde = new kunde();
            $enKunde->personnummer =$personnummer;
@@ -18,20 +18,23 @@
            $alleKunder = array();
            $kunde1 = new kunde();
            $kunde1->personnummer ="01010122344";
-           $kunde1->navn = "Per Olsen";
+           $kunde1->fornavn = "Per";
+           $kunde1->etternavn = "Olsen";
            $kunde1->adresse = "Osloveien 82 0270 Oslo";
            $kunde1->telefonnr="12345678";
            $kunde1->passord="123456";
            $alleKunder[]=$kunde1;
            $kunde2 = new kunde();
            $kunde2->personnummer ="01010122344";
-           $kunde2->navn = "Line Jensen";
+           $kunde2->fornavn = "Line";
+           $kunde2->etternavn = "Jensen";
            $kunde2->adresse = "Askerveien 100, 1379 Asker";
            $kunde2->telefonnr="92876789";
            $alleKunder[]=$kunde2;
            $kunde3 = new kunde();
            $kunde3->personnummer ="02020233455";
-           $kunde3->navn = "Ole Olsen";
+           $kunde3->fornavn = "Ole";
+           $kunde3->etternavn = "Olsen";
            $kunde3->adresse = "Bærumsveien 23, 1234 Bærum";
            $kunde3->telefonnr="99889988";
            $alleKunder[]=$kunde3;
@@ -102,4 +105,36 @@
             return "OK";
         }
         
+        public function hentSaldi($personnummer){
+            $kunde = new konto($personnummer);
+            $saldi = $kunde->saldo;
+            return "OK";
+        }
+        
+        public function registrerBetaling($kontoNr, $transaksjon){
+            return "OK";
+        }
+        
+        public function hentBetalinger($personnummer){
+            return "OK";
+        }
+        
+        public function utforBetaling($TxId){
+            return "OK";
+        }
+        
+        public function endreKundeInfo($kunde){
+            return "OK";
+        }
+        
+        public function hentKundeInfo($personnummer){
+           $kundeInfo = array();
+           $kunde = new Kunde();
+           $kunde->personnummer =$personnummer;
+           $kunde->fornavn = "Per";
+           $kunde->etternavn = "Olsen";
+           $kunde->adresse = "Osloveien 82, 0270 Oslo";
+           $kunde->telefonnr="12345678";
+            return $kundeInfo = [$kunde->adresse, $kunde->etternavn, $kunde->fornavn, $kunde->personnummer, $kunde->telefonnr];
+        }
     }

@@ -1,0 +1,4 @@
+
+*.cache
+TestingBank/TestFiles/.phpunit.result.cache
+TestingBank/nbproject/private/private.xml
