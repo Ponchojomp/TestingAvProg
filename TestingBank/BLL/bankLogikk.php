@@ -1,5 +1,4 @@
 <?php
-//Arthur jobber her
 include_once '../DAL/bankDatabase.php';
 include_once '../DAL/bankDatabaseStub.php';
 class Bank
