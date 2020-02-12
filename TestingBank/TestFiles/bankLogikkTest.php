@@ -6,6 +6,14 @@ include_once '../BLL/bankLogikk.php';
 
 class bankLogikkTest extends PHPUnit\Framework\TestCase {
     
+    public function testNyBankObjectUtenDB(){
+        //arrange
+        $bank = new Bank();
+        $bank2 = new Bank(new BankDBStub());
+        //assert
+        $this->assertEquals($bank->hentAlleKunder(), $bank2->hentAlleKunder());
+    }
+    
     public function testDatoFeilTransaksjoner() 
     {
         // arrange
@@ -250,6 +258,21 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
         $this->assertEquals("OK", $bank->endreKundeInfo($kunde));
     }
     
-    
+    public function testHentKundeIfno(){
+        //arrange
+        $bank = new Bank(new BankDBStub());
+        $personnummer ="01010122344";
+        $fornavn = "Per";
+        $etternavn = "Olsen";
+        $adresse = "Osloveien 82, 0270 Oslo";
+        $telefonnr="12345678";
+        //act
+        $kundeInfo = $bank->hentKundeInfo($personnummer);
+        $kundeAdresse = $kundeInfo[0];
+        $kundeFornavn = $kundeInfo[2];
+        //assert
+        $this->assertEquals($adresse, $kundeAdresse);
+        $this->assertEquals($fornavn, $kundeFornavn);
+    }
 }
 

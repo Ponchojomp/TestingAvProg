@@ -3,7 +3,7 @@
     include_once '../Model/domeneModell.php';
     class BankDBStub
     {
-        function hentEnKunde($personnummer)
+        public function hentEnKunde($personnummer)
         {
            $enKunde = new kunde();
            $enKunde->personnummer =$personnummer;
@@ -125,5 +125,16 @@
         
         public function endreKundeInfo($kunde){
             return "OK";
+        }
+        
+        public function hentKundeInfo($personnummer){
+           $kundeInfo = array();
+           $kunde = new Kunde();
+           $kunde->personnummer =$personnummer;
+           $kunde->fornavn = "Per";
+           $kunde->etternavn = "Olsen";
+           $kunde->adresse = "Osloveien 82, 0270 Oslo";
+           $kunde->telefonnr="12345678";
+            return $kundeInfo = [$kunde->adresse, $kunde->etternavn, $kunde->fornavn, $kunde->personnummer, $kunde->telefonnr];
         }
     }

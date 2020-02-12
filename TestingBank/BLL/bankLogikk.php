@@ -9,7 +9,9 @@ class Bank
     {
         if($innDb==null)
         {
-            $this->db=new BankDB(); 
+            //endret til bankDBStub for å kunne teste
+            //$this->db=new BankDB();
+            $this->db=new BankDBStub();
         }
         else
         {
@@ -96,8 +98,8 @@ class Bank
     
     function hentKundeInfo($personnummer)
     {
-        $kunde= $this->db->hentKundeInfo($personnummer);
-        return $kunde;
+        $kundeInfo= $this->db->hentKundeInfo($personnummer);
+        return $kundeInfo;
     }
     
     function hentAlleKunder(){
