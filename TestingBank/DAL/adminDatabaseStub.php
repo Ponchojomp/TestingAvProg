@@ -90,8 +90,8 @@ include_once '../Model/domeneModell.php';
             return "OK";
         }
         
-        function registrerKunde($konto){
-            If($konto->ID ==-1){
+        function registrerKunde($kunde){
+            If($kunde->ID ==-1){
                 return "Feil";
             }
             return "OK";
@@ -99,28 +99,34 @@ include_once '../Model/domeneModell.php';
         
         
         function slettKunde($personnummer){
-            If($kunde->ID ==-1){
+            If($personnummer->ID ==-1){
                 return "Feil";
             }
             return "OK";
         }
         
         function registrerKonto($konto){
-            If($kunde->ID ==-1){
+            If($konto->ID ==-1){
                 return "Feil";
             }
             return "OK";
         }
         function endreKonto($konto){
-            
+            If($konto->ID ==-1){
+                return "Feil";
+            }
+            return "OK";
         }
         
         function hentAlleKonti(){
-            
+            return $konti;
         }
        
         function slettKonto($kontonummer){
-            
+            If($kontonummer->ID ==-1){
+                return "Feil";
+            }
+            return "OK";
         }
     }
     
