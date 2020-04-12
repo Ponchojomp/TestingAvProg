@@ -141,8 +141,10 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
         //$adresse = "Osloveien 82 0270 Oslo";
         //$telefonnr="12345678";
         $bank=new Bank(new BankDBStub());
+        $kunde = new konto($personnummer);
+            $konto[] = [$kunde->kontonummer,$kunde->personnummer,$kunde->saldo, $kunde->transaksjoner, $kunde->type, $kunde->valuta];
         //assert
-        $this->assertEquals("OK", $bank->hentKonti($personnummer));
+        $this->assertEquals($konto, $bank->hentKonti($personnummer));
         $this->assertEquals("Feil i personnummer", $bank->hentKonti($personnummerFeil));
     }
     
@@ -194,8 +196,10 @@ class bankLogikkTest extends PHPUnit\Framework\TestCase {
         //$adresse = "Osloveien 82 0270 Oslo";
         //$telefonnr="12345678";
         $bank=new Bank(new BankDBStub());
+        $kunde = new konto($personnummer);
+            $saldi = $kunde->saldo;
         //assert
-        $this->assertEquals("OK", $bank->hentSaldi($personnummer));
+        $this->assertEquals($saldi, $bank->hentSaldi($personnummer));
         $this->assertEquals("Feil i personnummer", $bank->hentSaldi($personnummerFeil));
     }
     

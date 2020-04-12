@@ -101,13 +101,13 @@
         public function hentKonti($personnummer){
             $kunde = new konto($personnummer);
             $konto[] = [$kunde->kontonummer,$kunde->personnummer,$kunde->saldo, $kunde->transaksjoner, $kunde->type, $kunde->valuta];
-            return "OK";
+            return $konto;
         }
         
         public function hentSaldi($personnummer){
             $kunde = new konto($personnummer);
             $saldi = $kunde->saldo;
-            return "OK";
+            return $saldi;
         }
         
         public function registrerBetaling($kontoNr, $transaksjon){

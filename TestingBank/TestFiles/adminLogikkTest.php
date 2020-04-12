@@ -157,4 +157,110 @@ class adminLogikkTest extends PHPUnit\Framework\TestCase {
         $this->assertEquals("114342344511",$konto->transaksjoner[2]->fraTilKontonummer);
         $this->assertEquals("Lekeland",$konto->transaksjoner[2]->melding);
     }
+    
+    public function testEndreKunde(){
+        //arrange
+        $kunde = new kunde();
+           $kunde->personnummer ="01010122344";
+           $kunde->fornavn = "Per";
+           $kunde->etternavn = "Olsen";
+           $kunde->adresse = "Osloveien 82 0270 Oslo";
+           $kunde->telefonnr="12345678";
+           $kunde->P ="-1";
+        $admin=new Admin(new AdminDBStub());
+        //assert
+        $this->assertEquals("Feil", $admin->endreKundeInfo($kunde));
+        //arrange
+        $kunde->P ="1";
+        //assert
+        $this->assertEquals("OK", $admin->endreKundeInfo($kunde));
+    }
+    
+    public function testRegistrerKunde(){
+        //arrange
+        $kunde = new kunde();
+           $kunde->personnummer ="12345678911";
+           $kunde->fornavn = "Peder";
+           $kunde->etternavn = "Olason";
+           $kunde->adresse = "Osloveien 82 0270 Oslo";
+           $kunde->telefonnr="12345678";
+           $kunde->ID ="-1";
+        $admin=new Admin(new AdminDBStub());
+        //assert
+        $this->assertEquals("Feil", $admin->registrerKunde($kunde));
+        //arrange
+        $kunde->ID ="1";
+        //assert
+        $this->assertEquals("OK", $admin->registrerKunde($kunde));
+    }
+    
+    public function testSlettKunde(){
+        //arrange
+        $kunde = new kunde();
+           $kunde->personnummer ="12345678911";
+           $kunde->fornavn = "Peder";
+           $kunde->etternavn = "Olason";
+           $kunde->adresse = "Osloveien 82 0270 Oslo";
+           $kunde->telefonnr="12345678";
+           $kunde->ID ="-1";
+        $admin=new Admin(new AdminDBStub());
+        //assert
+        $this->assertEquals("Feil", $admin->slettKunde($kunde));
+        //arrange
+        $kunde->ID ="1";
+        //assert
+        $this->assertEquals("OK", $admin->slettKunde($kunde));
+    }
+    
+    public function testRegistrerKonto(){
+        //arrange
+        $konto = new konto();
+        $konto->ID = "-1";
+        $admin=new Admin(new AdminDBStub());      
+        //assert
+        $this->assertEquals("Feil", $admin->registrerKonto($konto));
+        //arrange
+        $konto->ID = "1";
+        //assert
+        $this->assertEquals("OK", $admin->registrerKonto($konto));
+    }
+    
+    public function testEndreKonto(){
+        //arrange
+        $konto = new konto();
+        $konto->ID = "-1";
+        $admin=new Admin(new AdminDBStub());      
+        //assert
+        $this->assertEquals("Feil", $admin->endreKonto($konto));
+        //arrange
+        $konto->ID = "1";
+        //assert
+        $this->assertEquals("OK", $admin->endreKonto($konto));
+    }
+    
+    public function testHentAlleKonti(){
+        //arrange
+        $konti = new konto();
+         $personnummer= $konti->personnummer = "12345678901";
+            $konti->kontonummer = "1234567890";
+            $konti->saldo = "100";
+            $konti->type = "testkonto";
+            $konti->valuta = "nok";
+        $admin=new Admin(new AdminDBStub());
+        //assert
+        $this->assertEquals($konti, $admin->hentAlleKonti());
+    }
+    
+    public function testSlettKonto(){
+        //arrange
+        $kontonummer = new konto();
+        $kontonummer->ID = "-1";
+        $admin=new Admin(new AdminDBStub());      
+        //assert
+        $this->assertEquals("Feil", $admin->slettKonto($kontonummer));
+        //arrange
+        $kontonummer->ID = "1";
+        //assert
+        $this->assertEquals("OK", $admin->slettKonto($kontonummer));
+    }
 }

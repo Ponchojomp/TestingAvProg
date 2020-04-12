@@ -122,6 +122,12 @@ include_once '../Model/domeneModell.php';
         }
         
         function hentAlleKonti(){
+            $konti = new konto();
+            $konti->personnummer = "12345678901";
+            $konti->kontonummer = "1234567890";
+            $konti->saldo = "100";
+            $konti->type = "testkonto";
+            $konti->valuta = "nok";
             return $konti;
         }
        
