@@ -9,8 +9,8 @@ class Bank
         if($innDb==null)
         {
             //endret til bankDBStub for å kunne teste
-            //$this->db=new BankDB();
-            $this->db=new BankDBStub();
+            $this->db=new BankDB();
+            //$this->db=new BankDBStub();
         }
         else
         {
