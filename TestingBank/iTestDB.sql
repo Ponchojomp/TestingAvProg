@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `Konto` (
 INSERT INTO `Konto` (`Kontonummer`, `Personnummer`, `Saldo`, `Type`, `Valuta`) VALUES
 ('112233445566', '02020203031', 14000.2, 'Aksjesparekonto', 'NOK'),
 ('665544332211', '02020203031', 8765, 'Stipendkonto', 'NOK'),
-('105010123456', '01010110523, 720, 'Lønnskonto', 'NOK'),
-('105020123456', '01010110523'', 100500, 'Sparekonto', 'NOK'),
+('105010123456', '01010110523', 720, 'Lønnskonto', 'NOK'),
+('105020123456', '01010110523', 100500, 'Sparekonto', 'NOK'),
 ('22334412345', '01010110523', 10234.5, 'Brukskonto', 'NOK');
 
 -- --------------------------------------------------------
